@@ -1,5 +1,5 @@
 const mongoose=require('mongoose')
-mongoose.connect(MONGO_URI).then(()=>console.log("Connected!"))
+mongoose.connect('mongodb://localhost:27017/paytm').then(()=>console.log("Connected!"))
 
 const userSchema=new mongoose.Schema({
     firstName: {
