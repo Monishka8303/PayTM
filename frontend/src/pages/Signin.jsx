@@ -1,4 +1,9 @@
 import React from 'react'
+import Heading from '../components/Heading'
+import SubHeading from '../components/SubHeading'
+import InputBox from '../components/InputBox'
+import Button from '../components/Button'
+import BottomWarning from '../components/BottomWarning'
 
 const Signin = () => {
   return (
@@ -9,17 +14,13 @@ const Signin = () => {
           <Heading label={"Sign In"}/>
           <SubHeading label={"Enter your credentials to access your account"}/>
 
-          <InputBox label={"Email: "} placeholder={"johndoe08@gmail.com"} onChange={(e)=>{setUsername(e.target.value)}}/>
-          <InputBox label={"Password: "} placeholder={""} onChange={(e)=>{setPassword(e.target.value)}}/>
+          <InputBox label={"Email: "} placeholder={"johndoe08@gmail.com"}/>
+          <InputBox label={"Password: "} placeholder={""}/>
 
           <div className='pt-4'>
-            <Button onClick={async ()=>{
-              const response = await axios.post("http://localhost:3000/api/v1/user/signup",{firstName,lastName,username,password});
-              localStorage.setItem("token",response.data.token);
-              navigate('/dashboard');
-            }} label={"Sign Up"}/>
+            <Button label={"Sign Up"}/>
           </div>
-          
+
           <BottomWarning label={"Don't have an account?"} buttonText={"Sign Up"} to={"/signup"}/>
         </div>
       </div>
