@@ -1,32 +1,34 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import Button from '../components/Button'
 
 const Users = () => {
 
     //backend call
-    const [users,setUsers]=useState([]);
-    const [filter,setFilter]=useState("");
+    const [users, setUsers] = useState([]);
+    const [filter, setFilter] = useState("");
+    
 
-    useEffect(()=>{
-        axios.get('http://localhost:3001/api/v1/users/bulk?filter='+filter)
+    useEffect(() => {
+        axios.get('http://localhost:3000/api/v1/user/bulk?filter='+filter)
         .then(response => {
             setUsers(response.data.user)
         })
-    },[filter])
+    }, [filter])
 
     return (
         <>
             <div className='mt-6 text-lg font-bold'>Users</div>
             <div className='my-2'>
-                <input onChange={(e)=>{setFilter(e.target.value)}} type="text" placeholder='Search users...' className='w-full px-2 py-1 border rounded border-slate-200'/>
+                <input onChange={(e) => { setFilter(e.target.value) }} type="text" placeholder='Search users...' className='w-full px-2 py-1 border rounded border-slate-200' />
             </div>
-            <div>{users.map(user=> <User user={user}/>)}</div>
+            <div>{users.map(user => <User key={user._id} id={user.userId} user={user} />)}</div>
         </>
     )
 }
 
-const User = ({user}) => {
+const User = ({ user }) => {
     const navigate = useNavigate();
 
     return (
@@ -39,9 +41,9 @@ const User = ({user}) => {
             </div>
 
             <div className='flex flex-col justify-center h-full'>
-                <Button onClick={(e)=>{
-                    navigate("/send?id="+user._id+"&name="+user.fistName);
-                }} label={"Send Money"}/>
+                <Button onClick={(e) => {
+                    navigate("/send?id=" + user._id + "&name=" + user.firstName);
+                }} label={"Send Money"} />
             </div>
         </div>
     )
