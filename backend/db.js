@@ -1,5 +1,5 @@
 const mongoose=require('mongoose')
-mongoose.connect('mongodb+srv://monishka8303:tVZTFMm4zkCgPCZm@cluster0.35tsj4i.mongodb.net/paytm').then(()=>console.log("Connected!"))
+mongoose.connect(MONGO_URI).then(()=>console.log("Connected!"))
 
 const userSchema=new mongoose.Schema({
     firstName: {
