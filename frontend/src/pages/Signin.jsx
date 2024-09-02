@@ -28,6 +28,7 @@ const Signin = () => {
             <Button onClick={async () => {
               const response = await axios.post("http://localhost:3000/api/v1/user/signin",{username,password});
               localStorage.setItem("token",response.data.token);
+              localStorage.setItem("firstName",response.data.firstName);
               navigate('/dashboard');
             }} label={"Sign In"}/>
           </div>

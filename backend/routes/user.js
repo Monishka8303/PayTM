@@ -83,6 +83,7 @@ router.post('/signin', async(req,res)=>{
     if(existingUser){
         const token=jwt.sign({userId:existingUser._id},JWT_SECRET)
         res.status(200).json({
+            firstName: existingUser.firstName,
             token: token
         })
         return;
