@@ -22,7 +22,7 @@ const Signin = () => {
           <SubHeading label={"Enter your credentials to access your account"}/>
 
           <InputBox label={"Email: "} placeholder={"johndoe08@gmail.com"} onChange={(e)=>{setUsername(e.target.value)}}/>
-          <InputBox label={"Password: "} placeholder={""} />
+          <InputBox label={"Password: "} placeholder={""} onChange={(e)=>{setPassword(e.target.value)}}/>
 
           <div className='pt-4'>
             <Button onClick={async () => {
