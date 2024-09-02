@@ -32,7 +32,9 @@ const SendMoney = () => {
                 <label htmlFor="amount" className='text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70'>
                   Amount (in Rs.)
                 </label>
-                <input type="text" className='flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm' id="amount" placeholder="Enter amount" />
+                <input onChange={(e) => {
+                  setAmount(e.target.value)
+                }} type="text" className='flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm' id="amount" placeholder="Enter amount" />
               </div>
 
               <button onClick={()=>{
